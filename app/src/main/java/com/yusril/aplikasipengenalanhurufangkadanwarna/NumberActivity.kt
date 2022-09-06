@@ -1,5 +1,6 @@
 package com.yusril.aplikasipengenalanhurufangkadanwarna
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -90,32 +91,36 @@ class NumberActivity : AppCompatActivity() {
                             strBuilder.append(item.value)
 //                            value.append("\n")
 //                            if (strBuilder.toString().first() in 'A'..'Z'){
-                            /*if (strBuilder.toString() == "A"){
-                                txtValue.text = strBuilder.toString()
-                                audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_a)
-                                audio.start()
-                            } else if (strBuilder.toString() == "B"){
-                                txtValue.text = strBuilder.toString()
-                                audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_b)
-                                audio.start()
-                            }else if (strBuilder.toString() == "C"){
-                                txtValue.text = strBuilder.toString()
-                                audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_c)
-                                audio.start()
-                            }else{
-                                Toast.makeText(this@NumberActivity, "$strBuilder", Toast.LENGTH_SHORT).show()
-                            }*/
+                            when {
+                                strBuilder.toString() == "A" -> {
+                                    val intent  = Intent(this@NumberActivity,DetailHurufActivity::class.java)
+                                    intent.putExtra("huruf","A")
+                                    startActivity(intent)
+                                }
+                                strBuilder.toString() == "B" -> {
+                                    val intent  = Intent(this@NumberActivity,DetailHuruf2Activity::class.java)
+                                    intent.putExtra("huruf","B")
+                                    startActivity(intent)
+                                }
+                                /*strBuilder.toString() == "C" -> {
+                                    txtValue.text = strBuilder.toString()
+                                    audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_c)
+                                    audio.start()
+                                }*/
+                            }
                         }
 
-                        txtValue.text = strBuilder.toString()
-                        when (txtValue.text) {
+//                        txtValue.text = strBuilder.toString()
+                       /* when (txtValue.text) {
                             "A" -> {
-                                audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_a)
-                                audio.start()
+                                val intent  = Intent(this@NumberActivity,DetailHurufActivity::class.java)
+                                intent.putExtra("huruf","A")
+                                startActivity(intent)
                             }
                             "B" -> {
-                                audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_b)
-                                audio.start()
+                                val intent  = Intent(this@NumberActivity,DetailHuruf2Activity::class.java)
+                                intent.putExtra("huruf","B")
+                                startActivity(intent)
                             }
                             "C" -> {
                                 audio = MediaPlayer.create(this@NumberActivity,R.raw.letter_c)
@@ -152,7 +157,7 @@ class NumberActivity : AppCompatActivity() {
                             else -> {
                                 Toast.makeText(this@NumberActivity, "$strBuilder", Toast.LENGTH_SHORT).show()
                             }
-                        }
+                        }*/
 
                     }
                 }
