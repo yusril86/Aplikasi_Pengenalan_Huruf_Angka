@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         binding.btnLetter.setOnClickListener {
             val intent = Intent(this,NumberActivity::class.java)
 //            intent.putExtra("letter","letter")
@@ -27,6 +29,11 @@ class MainActivity : AppCompatActivity(){
         binding.btnNumber.setOnClickListener {
             val intent = Intent(this,LetterDetectionActivity::class.java)
 //            intent.putExtra("number","number")
+            startActivity(intent)
+        }
+
+        binding.btnColor.setOnClickListener {
+            val intent = Intent(this, ColorActivity::class.java)
             startActivity(intent)
         }
     }

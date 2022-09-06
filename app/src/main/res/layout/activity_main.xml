@@ -4,105 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="24dp"
     tools:context=".MainActivity">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:id="@+id/containerButton"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi pengenalan huruf, angka dan warna"
+        android:layout_marginTop="32dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnLetter"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnLetter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_btn_menu"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="HURUF"
+        android:textColor="#ffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnNumber" />
+
+   <androidx.appcompat.widget.AppCompatTextView
+       android:id="@+id/btnNumber"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:paddingBottom="16dp"
-       android:paddingTop="64dp"
-       android:elevation="10dp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       android:background="@drawable/bg_menu"
-       >
-        <!--Huruf-->
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:elevation="10dp"
-          android:id="@+id/btnLetter"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginStart="25dp"
-          android:layout_marginEnd="25dp"
-          android:padding="8dp"
-          android:background="@drawable/bg_btn_menu"
-          >
-         <androidx.appcompat.widget.AppCompatTextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Huruf"
-             android:textColor="#ffff"
-             app:layout_constraintTop_toTopOf="parent"
-             android:textSize="24sp"
-             android:textStyle="bold"
-             android:layout_marginTop="8dp"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             android:layout_marginEnd="20sp"
-             />
-      </androidx.constraintlayout.widget.ConstraintLayout>
+       android:layout_marginStart="25dp"
+       android:layout_marginEnd="25dp"
+       android:layout_marginTop="24dp"
+       android:background="@drawable/bg_btn_menu"
+       android:gravity="center"
+       android:paddingTop="8dp"
+       android:paddingBottom="8dp"
+       android:text="ANGKA"
+       android:textColor="#ffff"
+       android:textSize="24sp"
+       android:textStyle="bold"
+       android:layout_marginBottom="24dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toTopOf="@id/btnColor" />
 
-      <!--Angka-->
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:elevation="10dp"
-          android:id="@+id/btnNumber"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_constraintTop_toBottomOf="@+id/btnLetter"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginStart="25dp"
-          android:layout_marginEnd="25dp"
-          android:layout_marginTop="16dp"
-          android:padding="8dp"
-          android:background="@drawable/bg_btn_menu"
-          >
-         <androidx.appcompat.widget.AppCompatTextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Angka"
-             android:textColor="#ffff"
-             app:layout_constraintTop_toTopOf="parent"
-             android:textSize="24sp"
-             android:textStyle="bold"
-             android:layout_marginTop="8dp"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             android:layout_marginEnd="20sp"
-             />
-      </androidx.constraintlayout.widget.ConstraintLayout>
+   <androidx.appcompat.widget.AppCompatTextView
+       android:id="@+id/btnColor"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="25dp"
+       android:layout_marginEnd="25dp"
+       android:layout_marginTop="24dp"
+       android:background="@drawable/bg_btn_menu"
+       android:gravity="center"
+       android:paddingTop="8dp"
+       android:paddingBottom="8dp"
+       android:text="WARNA"
+       android:textColor="#ffff"
+       android:textSize="24sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent" />
 
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:elevation="10dp"
-          android:id="@+id/btnColor"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_constraintTop_toBottomOf="@id/btnNumber"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginStart="25dp"
-          android:layout_marginEnd="25dp"
-          android:layout_marginTop="16dp"
-          android:padding="8dp"
-          android:background="@drawable/bg_btn_menu"
-          >
-         <androidx.appcompat.widget.AppCompatTextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Warna"
-             android:textColor="#ffff"
-             app:layout_constraintTop_toTopOf="parent"
-             android:textSize="24sp"
-             android:textStyle="bold"
-             android:layout_marginTop="8dp"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             android:layout_marginEnd="20sp"
-             />
-      </androidx.constraintlayout.widget.ConstraintLayout>
-   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
