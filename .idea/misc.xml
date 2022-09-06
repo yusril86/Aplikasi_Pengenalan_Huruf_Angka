@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/drawable/bg_btn_menu.xml" value="0.1525" />
         <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/drawable/bg_menu.xml" value="0.13" />
+        <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/activity_detail_huruf.xml" value="0.17572463768115942" />
+        <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/activity_detail_huruf2.xml" value="0.17572463768115942" />
         <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/activity_letter_detection.xml" value="0.17074275362318841" />
         <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/activity_number.xml" value="0.17572463768115942" />
+        <entry key="..\:/project/andro/AplikasiPengenalanHurufAngkadanWarna/app/src/main/res/layout/item_list_object.xml" value="0.17572463768115942" />
       </map>
     </option>
   </component>

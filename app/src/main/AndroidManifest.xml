@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplikasiPengenalanHurufAngkaDanWarna">
         <activity
+            android:name=".DetailHuruf2Activity"
+             android:exported="false" />
+         <activity
             android:name=".ColorActivity"
             android:exported="false" />
         <activity
