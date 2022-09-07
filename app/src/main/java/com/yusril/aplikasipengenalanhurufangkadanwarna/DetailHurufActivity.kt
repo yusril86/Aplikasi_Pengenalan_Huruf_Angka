@@ -1,5 +1,6 @@
 package com.yusril.aplikasipengenalanhurufangkadanwarna
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,5 +21,13 @@ class DetailHurufActivity : AppCompatActivity() {
             audio = MediaPlayer.create(this,R.raw.letter_a)
             audio.start()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent  = Intent(this@DetailHurufActivity, NumberActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
     }
 }
