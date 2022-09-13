@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.util.SparseArray
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -51,6 +52,8 @@ class LetterDetectionActivity : AppCompatActivity() {
             .setAutoFocusEnabled(true)
             .build()
 
+        val listLetter = ('A'..'Z').toMutableList()
+
         //SurfaceHolder
         cameraView.holder.addCallback(object : SurfaceHolder.Callback{
             override fun surfaceCreated(p0: SurfaceHolder) {
@@ -83,20 +86,13 @@ class LetterDetectionActivity : AppCompatActivity() {
 
         textRecognizer.setProcessor(object: Detector.Processor<TextBlock>{
             override fun release() {
-                when(resultDetection) {
-                    "A" -> {
-                        val intent  = Intent(this@LetterDetectionActivity,DetailHurufActivity::class.java)
-                        intent.putExtra("huruf","A")
-                        startActivity(intent)
-                    }
-                    "B" -> {
-                        val intent  = Intent(this@LetterDetectionActivity,DetailHuruf2Activity::class.java)
-                        intent.putExtra("huruf","B")
-                        startActivity(intent)
-                    }
-                    "C" -> {
-                        val intent  = Intent(this@LetterDetectionActivity,DetailHurufActivity::class.java)
-                        intent.putExtra("huruf","C")
+                listLetter.forEachIndexed { index, _ ->
+                    if (resultDetection == listLetter[index].toString() || resultDetection == listLetter[index].toString().lowercase()) {
+                        val intent = Intent(
+                            this@LetterDetectionActivity,
+                            DetailHurufActivity::class.java
+                        )
+                        intent.putExtra("letter", listLetter[index].toString())
                         startActivity(intent)
                     }
                 }
@@ -110,13 +106,9 @@ class LetterDetectionActivity : AppCompatActivity() {
                         for (i in 0 until items.size()) {
                             val item = items.valueAt(i)
                             strBuilder.append(item.value)
-                            when {
-                                strBuilder.toString() == "A" -> {
-                                    resultDetection = "A"
-                                    cameraSource.release()
-                                }
-                                strBuilder.toString() == "B" -> {
-                                    resultDetection = "B"
+                            listLetter.forEachIndexed { index, _ ->
+                                if (strBuilder.toString() == listLetter[index].toString() || strBuilder.toString() == listLetter[index].toString().lowercase()) {
+                                    resultDetection = listLetter[index].toString()
                                     cameraSource.release()
                                 }
                             }
