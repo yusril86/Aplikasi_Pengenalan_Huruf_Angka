@@ -26,7 +26,7 @@ class DetailHuruf2Activity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent  = Intent(this@DetailHuruf2Activity, NumberActivity::class.java)
+        val intent  = Intent(this@DetailHuruf2Activity, LetterDetectionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()

@@ -24,10 +24,10 @@
             android:name=".DetailHuruf"
             android:exported="false" />
         <activity
-            android:name=".NumberActivity"
+            android:name=".LetterDetectionActivity"
             android:exported="false" />
         <activity
-            android:name=".LetterDetectionActivity"
+            android:name=".NumberDetectionActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

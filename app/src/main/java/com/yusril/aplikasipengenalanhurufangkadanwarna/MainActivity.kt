@@ -2,10 +2,7 @@ package com.yusril.aplikasipengenalanhurufangkadanwarna
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.SurfaceHolder
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.vision.Detector
-import com.google.android.gms.vision.text.TextBlock
 import com.yusril.aplikasipengenalanhurufangkadanwarna.databinding.ActivityMainBinding
 
 
@@ -21,13 +18,13 @@ class MainActivity : AppCompatActivity(){
         supportActionBar?.hide()
 
         binding.btnLetter.setOnClickListener {
-            val intent = Intent(this,NumberActivity::class.java)
+            val intent = Intent(this,LetterDetectionActivity::class.java)
 //            intent.putExtra("letter","letter")
             startActivity(intent)
         }
 
         binding.btnNumber.setOnClickListener {
-            val intent = Intent(this,LetterDetectionActivity::class.java)
+            val intent = Intent(this,NumberDetectionActivity::class.java)
 //            intent.putExtra("number","number")
             startActivity(intent)
         }
