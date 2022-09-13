@@ -19,6 +19,8 @@ class DetailHurufActivity : AppCompatActivity() {
         binding = ActivityDetailHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         val huruf = intent.getStringExtra("letter")
 
         binding.tvHuruf.text = huruf
