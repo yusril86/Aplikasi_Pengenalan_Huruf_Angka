@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, ColorActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnTentang.setOnClickListener {
+            startActivity(Intent(this,TentangActivity::class.java))
+        }
     }
 
 

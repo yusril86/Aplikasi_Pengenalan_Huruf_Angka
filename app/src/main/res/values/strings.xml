@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Aplikasi Pengenalan Huruf, Angka dan Warna</string>
+
+    <string name="tentang">
+                Aplikasi ini merupakan sebuah rancang untuk mendeteksi
+        berupa huruf A-Z serta angka mulai dari 0 sampai 9
+        dan pemilihan warna. aplikasi ini juga menampilkan
+        ilustrasi gambar dan
+        suara pada huruf dan angka.
+    </string>
 </resources>

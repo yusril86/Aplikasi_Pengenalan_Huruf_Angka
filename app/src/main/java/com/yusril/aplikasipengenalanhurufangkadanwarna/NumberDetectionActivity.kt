@@ -1,13 +1,14 @@
 package com.yusril.aplikasipengenalanhurufangkadanwarna
 
-import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseArray
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -17,20 +18,24 @@ import com.google.android.gms.vision.text.TextBlock
 import com.google.android.gms.vision.text.TextRecognizer
 import com.yusril.aplikasipengenalanhurufangkadanwarna.databinding.ActivityLetterDetectionBinding
 
-class NumberDetectionActivity : AppCompatActivity(), SurfaceHolder.Callback,
-    Detector.Processor<TextBlock> {
+class NumberDetectionActivity : AppCompatActivity() {
 
-    private  lateinit var binding : ActivityLetterDetectionBinding
-    private var cameraSource: CameraSource? = null
-    private var cameraView: SurfaceView? = null
+    private lateinit var binding: ActivityLetterDetectionBinding
+    lateinit var cameraSource: CameraSource
+    lateinit var cameraView: SurfaceView
+    lateinit var txtValue : TextView
+
+    private var resultDetection = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLetterDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        cameraView = findViewById(R.id.surfaceView)
-        val txtRecognizer : TextRecognizer = TextRecognizer.Builder(applicationContext).build()
+        cameraView = findViewById(R.id.surfaceView)
+        txtValue = findViewById(R.id.text_view)
+
+        val txtRecognizer: TextRecognizer = TextRecognizer.Builder(applicationContext).build()
 
         if (!txtRecognizer.isOperational) {
             Log.e("Main Activity", "Detector dependencies are not yet available")
@@ -41,88 +46,77 @@ class NumberDetectionActivity : AppCompatActivity(), SurfaceHolder.Callback,
                 .setRequestedFps(2.0f)
                 .setAutoFocusEnabled(true)
                 .build()
-            binding.surfaceView.holder.addCallback(this)
-            txtRecognizer.setProcessor(this)
-            /*txtRecognizer.setProcessor(object: Detector.Processor<TextBlock>{
-                override fun release() {
+            val listNumber = (0..9).toMutableList()
 
+            cameraView.holder.addCallback(object : SurfaceHolder.Callback {
+                override fun surfaceCreated(p0: SurfaceHolder) {
+                    try {
+                        if (ActivityCompat.checkSelfPermission(
+                                this@NumberDetectionActivity,
+                                android.Manifest.permission.CAMERA
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            ActivityCompat.requestPermissions(this@NumberDetectionActivity, arrayOf(android.Manifest.permission.CAMERA), 1)
+                            return
+                        }
+                        cameraSource.start(cameraView.holder)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                @SuppressLint("MissingPermission")
+                override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
+                    cameraSource.start(cameraView.holder)
+                }
+
+                override fun surfaceDestroyed(p0: SurfaceHolder) {
+                    cameraSource.stop()
+                }
+            })
+
+            txtRecognizer.setProcessor(object : Detector.Processor<TextBlock> {
+                override fun release() {
+                    listNumber.forEachIndexed { index, _ ->
+                        if (resultDetection == listNumber[index].toString()) {
+                            val intent = Intent(
+                                this@NumberDetectionActivity,
+                                DetailAngkaActivity::class.java
+                            )
+                            intent.putExtra("number", listNumber[index].toString())
+                            startActivity(intent)
+                        }
+                    }
                 }
 
                 override fun receiveDetections(p0: Detector.Detections<TextBlock>) {
-
-                }
-
-            })*/
-        }
-    }
-
-    override fun surfaceCreated(p0: SurfaceHolder) {
-        try {
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.CAMERA
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 1)
-                return
-            }
-            cameraSource!!.start(binding.surfaceView.holder)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
-
-    }
-
-    override fun surfaceDestroyed(p0: SurfaceHolder) {
-        cameraSource?.stop()
-    }
-
-    override fun release() {
-
-    }
-
-    override fun receiveDetections(p0: Detector.Detections<TextBlock?>) {
-        val items: SparseArray<TextBlock?> = p0.detectedItems
-        val strBuilder = StringBuilder()
-
-        for (i in 1..items.size()){
-            val item = items.valueAt(i) as TextBlock
-            strBuilder.append(item.value)
-
-
-            binding.textView.post {
-                if (strBuilder.toString().first() in 'A'..'Z'){
-                    binding.textView.text = strBuilder.toString()
-                } else {
-                    Toast.makeText(this, "$strBuilder", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-        }
-        
-    }
-
-    @SuppressLint("MissingPermission")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            1 -> {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    try {
-                        cameraSource!!.start(cameraView!!.holder)
-                    } catch (e: java.lang.Exception) {
+                    val items : SparseArray<TextBlock> = p0.detectedItems
+                    if (items.size() > 0) {
+                        txtValue.post {
+                            val strBuilder = StringBuilder()
+                            for (i in 0 until items.size()) {
+                                val item = items.valueAt(i)
+                                strBuilder.append(item.value)
+                                listNumber.forEachIndexed { index, _ ->
+                                    if (strBuilder.toString() == listNumber[index].toString() || strBuilder.toString() == listNumber[index].toString()
+                                            .lowercase()
+                                    ) {
+                                        resultDetection = listNumber[index].toString()
+                                        cameraSource.release()
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-            }
+
+            })
         }
     }
+
+
+
+
 }
 
 
