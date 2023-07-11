@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AplikasiPengenalanHurufAngkaDanWarna">
-         <activity
+        <activity
+            android:name=".DetailAngkaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TentangActivity"
+            android:exported="false" />
+        <activity
             android:name=".ColorActivity"
             android:exported="false" />
         <activity
