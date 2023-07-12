@@ -87,4 +87,17 @@
         android:background="@drawable/btn_color_pick"
         android:backgroundTint="@color/black"
         />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivCombineColor"
+        app:layout_constraintStart_toStartOf="@id/ivCombineColor"
+        app:layout_constraintEnd_toEndOf="@id/ivCombineColor"
+        android:layout_marginTop="16dp"
+        android:text="Black"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

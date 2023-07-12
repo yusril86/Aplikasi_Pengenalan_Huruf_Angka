@@ -165,24 +165,44 @@ class ColorActivity : AppCompatActivity() {
 
         if (firstColor == 1 && secondColor == 1){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.cyan))
+            binding.tvNameColor.text = "Cyan"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.cyan))
         }else if (firstColor == 1 && secondColor ==2){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.blue))
+            binding.tvNameColor.text = "Blue"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.blue))
         }else if (firstColor == 1 && secondColor == 3){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.green))
+            binding.tvNameColor.text = "Green"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.green))
         }else if (firstColor == 2 && secondColor == 1){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.blue))
+            binding.tvNameColor.text = "Blue"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.blue))
         }else if (firstColor == 2  && secondColor == 2){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.magenta))
+            binding.tvNameColor.text = "Magenta"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.magenta))
         }else if (firstColor == 2 && secondColor == 3){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red))
+            binding.tvNameColor.text = "Red"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.red))
         }else if (firstColor == 3 && secondColor ==1 ){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.green))
+            binding.tvNameColor.text = "Green"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.green))
         }else if (firstColor == 3 && secondColor == 2){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red))
+            binding.tvNameColor.text = "Red"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.red))
         }else if (firstColor == 3 && secondColor == 3){
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.yellow))
+            binding.tvNameColor.text = "Yellow"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.yellow))
         }else{
             binding.ivCombineColor.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.black))
+            binding.tvNameColor.text = "Black"
+            binding.tvNameColor.setTextColor(resources.getColor(R.color.black))
         }
     }
 }
